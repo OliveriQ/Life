@@ -1,4 +1,4 @@
-let W = 600, H = 400, K = 20;
+let W = 1100, H = 800, K = 20;
 let R = W / K, C = H / K;
 let cells = [];
 
@@ -14,33 +14,35 @@ function Cell(x, y, alive) {
 }
 
 function updateAllCells() {
-  for (let cell of cells) {
-    let count = getNeighbors(cell);
-    let index = cell.index();
-    if (cell.alive) {
-      if (count <= 1) {
-        cells[index].next = false;
-      }
-      else if (count >= 4) {
-        cells[index].next = false;
-      }
-      else {
-        cells[index].next = true;
-      }
-    }
-    else {
-      if (count == 3) {
-        cells[index].next = true;
+  if (start) {
+    for (let cell of cells) {
+      let count = getNeighbors(cell);
+      let index = cell.index();
+      if (cell.alive) {
+        if (count <= 1) {
+          cells[index].next = false;
+        }
+        else if (count >= 4) {
+          cells[index].next = false;
+        }
+        else {
+          cells[index].next = true;
+        }
       }
       else {
-        cells[index].next = false;
+        if (count == 3) {
+          cells[index].next = true;
+        }
+        else {
+          cells[index].next = false;
+        }
       }
+      console.log();
     }
-    console.log();
-  }
-  for (let cell of cells) {
-    let index = cell.index();
-    cells[index].alive = cells[index].next;
+    for (let cell of cells) {
+      let index = cell.index();
+      cells[index].alive = cells[index].next;
+    }
   }
 }
 

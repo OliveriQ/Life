@@ -1,3 +1,5 @@
+let start = false;
+
 // draw cells 
 function drawAllCells() {
   for (let cell of cells) {
@@ -23,20 +25,20 @@ function drawGrid() {
 }
 
 function setup() {
-  createCanvas(W, H);
-  frameRate(1);
+  let cnv = createCanvas(W, H);
+  cnv.position(100, 150);
+  frameRate(5);
   for (let i = 0; i < H; i += K) {
     for (let j = 0; j < W; j += K) {
       cells.push(new Cell(j, i, false));
     }
   }
-  
+
   cells[256 - R].alive = true;
   cells[257].alive = true;
   cells[256 + R + 1].alive = true;
   cells[256 + R - 1].alive = true;
   cells[256 + R].alive = true;
-
   
   background(0);
   
@@ -59,4 +61,31 @@ function draw() {
   // update cells
   updateAllCells();
   
+}
+
+// (this.y / K) * R + (this.x / K)
+
+function mouseClicked() {
+  if (!start) {
+    let x = Math.round(mouseX / K) * K;
+    let y = Math.round(mouseY / K) * K;
+    let index = (y / K) * R + (x / K);
+    if (!cells[index].alive) {
+      cells[index].alive = true;
+    }
+    else {
+      cells[index].alive = false;
+    }
+  }
+}
+
+function keyPressed() {
+  if (keyCode == 32) {
+    if (start) {
+      start = false;
+    }
+    else {
+      start = true;
+    }
+  }
 }
