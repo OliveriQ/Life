@@ -83,7 +83,7 @@ function mouseClicked() {
 }
 
 function keyPressed() {
-  if (keyCode == 32) {
+  if (keyCode == ENTER) {
     if (start) {
       start = false;
     }
