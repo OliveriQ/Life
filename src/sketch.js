@@ -34,11 +34,14 @@ function setup() {
     }
   }
 
-  cells[256 - R].alive = true;
+  cells[226 - R].alive = true;
+  cells[227].alive = true;
+  cells[226 + R + 1].alive = true;
+  cells[226 + R - 1].alive = true;
+  cells[226 + R].alive = true;
+  cells[255].alive = true;
+  cells[256].alive = true;
   cells[257].alive = true;
-  cells[256 + R + 1].alive = true;
-  cells[256 + R - 1].alive = true;
-  cells[256 + R].alive = true;
   
   background(0);
   
