@@ -27,21 +27,23 @@ function drawGrid() {
 function setup() {
   let cnv = createCanvas(W, H);
   cnv.position(100, 150);
-  frameRate(parseInt(slider.value));
+  //frameRate(parseInt(slider.value));
   for (let i = 0; i < H; i += K) {
     for (let j = 0; j < W; j += K) {
       cells.push(new Cell(j, i, false));
     }
   }
 
-  cells[226 - R].alive = true;
-  cells[227].alive = true;
-  cells[226 + R + 1].alive = true;
-  cells[226 + R - 1].alive = true;
-  cells[226 + R].alive = true;
-  cells[255].alive = true;
-  cells[256].alive = true;
-  cells[257].alive = true;
+  cells[4450].alive = true;
+  cells[4451].alive = true;
+  cells[4452].alive = true;
+  cells[4453].alive = true;
+  cells[4454].alive = true;
+  cells[4455].alive = true;
+  cells[4450 - R + 2].alive = true;
+  cells[4450 - R + 3].alive = true;
+  cells[4450 - 2 * R + 1].alive = true;
+  cells[4450 - 2 * R + 4].alive = true;
   
   background(0);
   
@@ -56,7 +58,7 @@ function setup() {
 }
 
 function draw() {
-  frameRate(parseInt(slider.value));
+  //frameRate(parseInt(slider.value));
 
   background(0);
   

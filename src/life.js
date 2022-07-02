@@ -1,4 +1,4 @@
-let W = 1100, H = 800, K = 20;
+let W = 1100, H = 800, K = 10;
 let R = W / K, C = H / K;
 let cells = [];
 
