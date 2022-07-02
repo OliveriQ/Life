@@ -27,7 +27,7 @@ function drawGrid() {
 function setup() {
   let cnv = createCanvas(W, H);
   cnv.position(100, 150);
-  frameRate(5);
+  frameRate(parseInt(slider.value));
   for (let i = 0; i < H; i += K) {
     for (let j = 0; j < W; j += K) {
       cells.push(new Cell(j, i, false));
@@ -56,6 +56,8 @@ function setup() {
 }
 
 function draw() {
+  frameRate(parseInt(slider.value));
+
   background(0);
   
   // draw cells
@@ -91,4 +93,13 @@ function keyPressed() {
       start = true;
     }
   }
+}
+
+let slider = document.getElementById("myRange");
+let output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
 }
